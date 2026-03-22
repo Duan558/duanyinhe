@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>段银河 | 全案设计师 · 10年深耕曲靖</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefcf8;
+            color: #2c2a29;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* 通用样式 */
+        h1, h2, h3 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #c7a17a;
+            border-radius: 4px;
+        }
+        .section {
+            margin: 5rem 0;
+        }
+        .section:first-of-type {
+            margin-top: 2rem;
+        }
+        .badge {
+            display: inline-block;
+            background: #ede6dd;
+            color: #5e3e2b;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        /* 头部 hero */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            padding: 3rem 0 2rem;
+            border-bottom: 1px solid #ece4db;
+        }
+        .hero-info h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #3b2a21;
+            margin-bottom: 0.5rem;
+        }
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: #6b4c38;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        .hero-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.2rem 0 1rem;
+        }
+        .hero-details span {
+            font-size: 0.95rem;
+            background: #f3efe9;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero-details i {
+            color: #c7a17a;
+            width: 1.2rem;
+        }
+        .btn-vr {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #2c2a29;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            margin-top: 0.8rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-vr:hover {
+            background: #c7a17a;
+            color: #1f1b18;
+            transform: translateY(-2px);
+        }
+        .hero-avatar {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #e7dbcf, #cfbcab);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            font-weight: 500;
+            color: #4f3524;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+        /* 荣誉卡片 */
+        .honor-card {
+            background: #ffffffea;
+            border-left: 5px solid #c7a17a;
+            padding: 1.2rem 1.8rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            margin: 1rem 0;
+        }
+        /* 经历时间轴 */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+        .timeline-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-bottom: 1px solid #ece4db;
+            padding-bottom: 1.5rem;
+        }
+        .timeline-year {
+            min-width: 130px;
+            font-weight: 700;
+            color: #c7a17a;
+            font-size: 1.1rem;
+        }
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.4rem;
+        }
+        .timeline-content p {
+            color: #5a4a3c;
+            line-height: 1.5;
+        }
+        /* 网格布局 skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .skill-card {
+            background: white;
+            padding: 1.4rem;
+            border-radius: 24px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+            border: 1px solid #f0e8e0;
+        }
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #3b2a21;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .skill-tags span {
+            background: #f4ede6;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .double-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .quote-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            background: #f9f5ef;
+            padding: 1.8rem;
+            border-radius: 28px;
+            color: #4b3a2c;
+            border-left: 4px solid #c7a17a;
+        }
+        .advantage-list {
+            list-style: none;
+        }
+        .advantage-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .advantage-list i {
+            color: #c7a17a;
+            margin-top: 0.2rem;
+        }
+        /* 作品案例区 */
+        .cases-vr {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+        .vr-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.25s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid #efe3d8;
+        }
+        .vr-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+        }
+        .vr-img-placeholder {
+            background: #e2d5c8;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #7c5f48;
+        }
+        .vr-info {
+            padding: 1.2rem;
+        }
+        .vr-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+        .vr-link {
+            display: inline-block;
+            margin-top: 0.8rem;
+            color: #c7a17a;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .vr-link i {
+            transition: 0.2s;
+        }
+        .vr-link:hover i {
+            transform: translateX(5px);
+        }
+        .local-list {
+            background: #fefaf5;
+            border-radius: 28px;
+            padding: 1.8rem;
+            margin-top: 1rem;
+        }
+        .tags-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .tags-group span {
+            background: white;
+            border-radius: 40px;
+            padding: 0.5rem 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #e5d9cf;
+            font-size: 0.9rem;
+        }
+        .btn-main-link {
+            background: #2c2a29;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1rem;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .btn-main-link:hover {
+            background: #c7a17a;
+            color: #1f1b18;
+        }
+        footer {
+            text-align: center;
+            padding: 2.5rem 0;
+            border-top: 1px solid #ece4db;
+            margin-top: 3rem;
+            color: #7c6b5c;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 800px) {
+            .container {
+                padding: 0 24px;
+            }
+            .double-col {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            h2:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            h2 {
+                text-align: center;
+                display: block;
+            }
+            .hero-details {
+                justify-content: center;
+            }
+            .timeline-item {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+            .timeline-year {
+                margin-bottom: 0.2rem;
+            }
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #e9dfd5;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero 头部区域 -->
+    <div class="hero">
+        <div class="hero-info">
+            <h1>段银河</h1>
+            <div class="hero-tagline">全案设计 · 10年深植曲靖，让每寸空间诉说生活诗意</div>
+            <div class="hero-details">
+                <span><i class="fas fa-briefcase"></i> 全案设计总监</span>
+                <span><i class="fas fa-calendar-alt"></i> 10年+ 从业经验</span>
+                <span><i class="fas fa-map-marker-alt"></i> 云南省曲靖市</span>
+            </div>
+            <a href="https://vr.3d66.com/author/mobile_1320271_1_0_1.html?source=5" target="_blank" class="btn-vr">
+                <i class="fas fa-vr-cardboard"></i> 浏览全部VR作品集
+            </a>
+        </div>
+        <div class="hero-avatar">
+            <span>段</span>
+        </div>
+    </div>
+
+    <!-- 荣誉 + 工作经历 组合区域 -->
+    <div class="section">
+        <h2>荣誉 · 历程</h2>
+        <div class="double-col">
+            <!-- 左侧荣誉 -->
+            <div>
+                <div class="honor-card">
+                    <i class="fas fa-trophy" style="color: #c7a17a; font-size: 1.4rem; margin-right: 8px;"></i>
+                    <strong style="font-size: 1.1rem;">2018-2019年度国际环艺创新设计作品大赛</strong>
+                    <p style="margin-top: 8px;">商业空间方案类 银奖 —— 宣威月子中心项目</p>
+                </div>
+                <!-- 附加荣誉标签可以再写个本地赞誉 -->
+                <div style="margin-top: 1rem; background: #fff7f0; border-radius: 24px; padding: 1.2rem;">
+                    <i class="fas fa-award"></i> <strong>曲靖设计影响力人物</strong> · 多套实景作品被收录为本地标杆案例
+                </div>
+            </div>
+            <!-- 右侧工作经历 timeline -->
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2020.03 – 2025.09</div>
+                    <div class="timeline-content">
+                        <h3>设计总监 / 设计主管 · 创艺装饰、喜客喜</h3>
+                        <p>统筹团队全案设计与项目落地，负责方案终审、设计质量把控及团队管理；主导曲靖中高端家装全案设计，兼顾创意落地与施工交付，打造高还原度实景案例，结合本地居住需求定制方案。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2017.03 – 2020.03</div>
+                    <div class="timeline-content">
+                        <h3>室内设计师 · 曲靖名典装饰</h3>
+                        <p>独立完成住宅全案设计全流程，方案创作、效果图/施工图深化、施工现场交底，全程跟进从设计到交付，落地多款平层、自建房、旧房改造经典案例。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2016.01 – 2016.06</div>
+                    <div class="timeline-content">
+                        <h3>设计师助理 · 北京龙发装饰</h3>
+                        <p>协助主案设计师完成方案深化、图纸绘制及现场跟进，夯实行业规范、施工工艺与项目执行基础，融合一线城市设计理念。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2015.01 – 2015.12</div>
+                    <div class="timeline-content">
+                        <h3>销售专员 · 昆明东美装饰</h3>
+                        <p>精准挖掘客户核心居住需求，积累高效谈单沟通与需求转化能力，打造扎实客户思维，为后续设计落地奠定优质服务基础。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 专业技能 + 设计理念/优势 混合区 -->
+    <div class="section">
+        <h2>专业领域</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3><i class="fas fa-laptop-code"></i> 设计软件</h3>
+                <div class="skill-tags">
+                    <span>CAD</span><span>3DMAX</span><span>酷家乐</span><span>PS</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-palette"></i> 主打风格</h3>
+                <div class="skill-tags">
+                    <span>原木奶油风</span><span>现代极简</span><span>轻奢</span><span>北欧</span>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 8px;">☆ 原木奶油风为核心特色，营造治愈氛围</p>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-draw-polygon"></i> 擅长户型</h3>
+                <div class="skill-tags">
+                    <span>平层</span><span>小户型</span><span>大户型</span><span>旧房改造</span><span>自建房</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-crown"></i> 核心能力</h3>
+                <div class="skill-tags">
+                    <span>动线优化</span><span>收纳系统定制</span><span>户型结构改造</span><span>全案落地</span><span>预算精准控制</span><span>施工工艺精通</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="double-col">
+            <div>
+                <h2 style="margin-bottom: 1rem;">设计理念</h2>
+                <div class="quote-text">
+                    “一尘不染素净澄明，用平静的心灵看世界，利用淡淡的家具布局把原有的空间净化，把气质和品位含蓄地表现出来。”
+                </div>
+            </div>
+            <div>
+                <h2 style="margin-bottom: 1rem;">个人优势</h2>
+                <ul class="advantage-list">
+                    <li><i class="fas fa-head-side-vr"></i> 深度倾听客户需求，不强行推销风格，量身定制设计方案</li>
+                    <li><i class="fas fa-sun"></i> 重视采光、动线、收纳等核心居住体验，设计兼顾美观与实用</li>
+                    <li><i class="fas fa-chart-line"></i> 预算透明化，精准把控成本，帮客户省钱不降低落地效果</li>
+                    <li><i class="fas fa-hard-hat"></i> 全流程跟进项目落地，从设计到施工全程对接，还原度高</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自我评价 单独区 -->
+    <div class="section">
+        <h2>自我评价</h2>
+        <div style="background: #fbf7f2; border-radius: 28px; padding: 1.8rem; margin-top: 0.5rem;">
+            <p>深耕曲靖家装设计行业10年，从设计师稳步晋升至设计总监，精通家装全流程设计、施工对接与团队管理，兼具一线城市设计视野与本地落地实操经验。擅长根据客户需求定制个性化全案设计，精通现代、奶油风等多风格创作，尤其在户型改造、收纳规划、效果还原上形成核心优势；担任管理岗期间，统筹团队完成多款中高端项目落地，兼顾设计美感、居住实用性与客户体验，落地还原度高。</p>
+        </div>
+    </div>
+
+    <!-- 作品案例区域：VR作品 + 本地实景案例 -->
+    <div class="section">
+        <h2>作品案例</h2>
+        <!-- VR 实景案例展示区 (四个具体VR案例 + 总VR链接已包含) -->
+        <div style="margin-bottom: 1rem;">
+            <span class="badge"><i class="fas fa-vr-cardboard"></i> VR全景实景案例</span>
+            <p style="margin: 0.8rem 0 0.2rem; color: #5f4c3a;">点击卡片即可进入VR主页，沉浸体验段银河设计实景空间</p>
+        </div>
+        <div class="cases-vr">
+            <!-- 金澜溪谷 VR 案例卡片（统一跳转至作者VR主页） -->
+            <div class="vr-card">
+                <div class="vr-img-placeholder"><i class="fas fa-cube fa-3x"></i></div>
+                <div class="vr-info">
+                    <h4>金澜溪谷</h4>
+                    <p>现代轻奢 · 全案落地 | 曲靖标杆大宅</p>
+                    <a href="https://vr.3d66.com/author/mobile_1320271_1_0_1.html?source=5" target="_blank" class="vr-link">沉浸式VR体验 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="vr-card">
+                <div class="vr-img-placeholder"><i class="fas fa-cube fa-3x"></i></div>
+                <div class="vr-info">
+                    <h4>鼎盛世家</h4>
+                    <p>原木奶油风 · 高还原实景</p>
+                    <a href="https://vr.3d66.com/author/mobile_1320271_1_0_1.html?source=5" target="_blank" class="vr-link">沉浸式VR体验 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="vr-card">
+                <div class="vr-img-placeholder"><i class="fas fa-cube fa-3x"></i></div>
+                <div class="vr-info">
+                    <h4>味源小区</h4>
+                    <p>极简主义 · 收纳与动线优化典范</p>
+                    <a href="https://vr.3d66.com/author/mobile_1320271_1_0_1.html?source=5" target="_blank" class="vr-link">沉浸式VR体验 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="vr-card">
+                <div class="vr-img-placeholder"><i class="fas fa-cube fa-3x"></i></div>
+                <div class="vr-info">
+                    <h4>美景公园</h4>
+                    <p>现代自然主义 · 诗意栖居</p>
+                    <a href="https://vr.3d66.com/author/mobile_1320271_1_0_1.html?source=5" target="_blank" class="vr-link">沉浸式VR体验 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- 主VR链接再次强调 -->
+        <div style="text-align: center; margin: 1rem 0 2rem;">
+            <a href="https://vr.3d66.com/author/mobile_1320271_1_0_1.html?source=5" target="_blank" class="btn-main-link">
+                <i class="fas fa-vr-cardboard"></i> 进入段银河VR主页 · 看更多全景案例
+            </a>
+        </div>
+
+        <!-- 曲靖本地实景案例列表 -->
+        <div class="local-list">
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                <i class="fas fa-city" style="font-size: 1.6rem; color: #c7a17a;"></i>
+                <h3 style="margin:0; font-size: 1.4rem;">曲靖本地落地实景案例</h3>
+                <span style="font-size: 0.8rem; background: #e9ddcf; padding: 2px 12px; border-radius: 30px;">还原度高达95%+</span>
+            </div>
+            <div class="tags-group">
+                <span>花果山</span><span>玫瑰园</span><span>龙泽园·祥和</span><span>龙府家园</span><span>大为小区</span>
+                <span>南江花园</span><span>味源小区</span><span>美景公园</span><span>颐江园</span><span>西河湾</span><span>汇泰西府</span>
+            </div>
+            <p style="margin-top: 1.2rem; font-size: 0.85rem; color: #7a624b;"><i class="fas fa-check-circle"></i> 以上为部分精选实景落地项目，涵盖平层、旧改、自建房等全户型，每一套均由段银河全案主理。</p>
+        </div>
+
+        <!-- 额外补充说明荣誉作品：宣威月子中心项目可提及 -->
+        <div style="margin-top: 1.5rem; background: #fdf9f3; border-radius: 20px; padding: 1rem 1.5rem; font-size: 0.9rem;">
+            <i class="fas fa-medal" style="color:#b47c4e;"></i> 荣誉作品：<strong>宣威月子中心</strong> — 2018-2019国际环艺创新设计大赛商业空间方案类银奖，彰显商业与人文温度。
+        </div>
+    </div>
+
+    <!-- 联系/咨询区块 - 优雅展示服务理念 -->
+    <div style="background: #2c2a29; color: #efe3d8; border-radius: 32px; padding: 2rem; margin: 3rem 0 2rem; text-align: center;">
+        <i class="fas fa-comment-dots" style="font-size: 2rem; margin-bottom: 0.5rem; display: inline-block;"></i>
+        <h3 style="color: #f5ede4; margin-bottom: 0.5rem;">让每个家成为独一无二的作品</h3>
+        <p style="max-width: 500px; margin: 0 auto;">全案设计咨询 | 户型改造规划 | 软装落地服务<br>坐标曲靖，10年本土深耕，从设计到交付全程陪伴</p>
+        <div style="margin-top: 1rem;">
+            <span style="background: #c7a17a; padding: 0.3rem 1rem; border-radius: 30px; font-size: 0.8rem; font-weight: 500; color:#2c2a29;">📞 设计咨询：添加微信 DuanDesign_QJ</span>
+            <span style="margin-left: 0.8rem; font-size: 0.8rem;"><i class="fas fa-envelope"></i> duanyinhe@design.com</span>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 段银河 · 全案设计 | 深耕曲靖 专注品质家居 | 所有VR案例作品源自3d66官方授权展示</p>
+        <p style="margin-top: 0.3rem;"><i class="fas fa-cube"></i> 设计还原 · 生活美学 · 全案落地专家</p>
+    </footer>
+</div>
+</body>
+</html>
